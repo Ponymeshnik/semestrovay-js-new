@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroName) {
             await fetchAndDisplayHeroStats(heroName);
         } else {
-            alert('Please enter a hero name.');
+            alert('Пожалуйста, введите имя героя.');
         }
     });
 
@@ -76,7 +76,7 @@ async function loadPlayerInfo(playerId) {
         displayPlayerInfo(topPlayedHeroes, topWinrateHeroes);
         displayRecentMatches(recentMatchDetails, heroMap, playerId);
     } catch (error) {
-        displayError('Failed to fetch player info. Please try again later.');
+        displayError('Не удалось получить информацию об игроке. Пожалуйста, повторите попытку позже.');
     }
 }
 

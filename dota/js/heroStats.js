@@ -8,15 +8,15 @@ export async function fetchHeroStats(heroName) {
                 HEROES[hero.localized_name.toLowerCase()] = hero;
             });
         } else {
-            console.error('Failed to fetch heroes from OpenDota API');
+            console.error('Не удалось получить героев из API OpenDota');
         }
     } catch (error) {
-        console.error('Error fetching heroes:', error);
+        console.error('Ошибка при получении героев:', error);
     }
 
     heroName = heroName.trim().toLowerCase();
     if (!HEROES[heroName]) {
-        document.getElementById('heroStats').innerText = 'Hero not found. Please enter a valid hero name.';
+        document.getElementById('heroStats').innerText = 'Герой не найден. Пожалуйста, введите правильное имя героя.';
         return;
     }
 
@@ -26,7 +26,7 @@ export async function fetchHeroStats(heroName) {
             const heroesStats = await response.json();
             const heroStats = heroesStats.find(hero => hero.localized_name.toLowerCase() === heroName);
             if (!heroStats) {
-                document.getElementById('heroStats').innerText = 'Hero stats not found.';
+                document.getElementById('heroStats').innerText = 'Статы героя не найдены.';
                 return;
             }
 
@@ -39,9 +39,6 @@ export async function fetchHeroStats(heroName) {
                 Hero: ${heroStats.localized_name}
                 Winrate: ${(heroStats.pro_win / heroStats.pro_pick * 100).toFixed(2)}%
                 Pickrate: ${(heroStats.pro_pick / totalProPick * 100).toFixed(2)}%
-                Avg Kills: ${heroStats['3'] ? heroStats['3'].avg_kills.toFixed(2) : 'N/A'}
-                Avg Deaths: ${heroStats['3'] ? heroStats['3'].avg_deaths.toFixed(2) : 'N/A'}
-                Avg Assists: ${heroStats['3'] ? heroStats['3'].avg_assists.toFixed(2) : 'N/A'}
                 ID: ${heroStats.id}
                 Primary Attribute: ${heroStats.primary_attr}
                 Attack Type: ${heroStats.attack_type}
@@ -74,9 +71,9 @@ export async function fetchHeroStats(heroName) {
 
             document.getElementById('hero-stats-container').innerText = message;
         } else {
-            document.getElementById('heroStats').innerText = 'Failed to fetch hero stats from OpenDota API.';
+            document.getElementById('heroStats').innerText = 'Не удалось получить статистику героя из OpenDota API.';
         }
     } catch (error) {
-        document.getElementById('heroStats').innerText = 'Error fetching hero stats: ' + error;
+        document.getElementById('heroStats').innerText = 'Ошибка при получении статистики героя: ' + error;
     }
 }
