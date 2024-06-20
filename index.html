@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dota 2 Player Stats</title>
+    <link rel="stylesheet" href="/dota/css/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-y: scroll;
+        }
+        #main-page {
+            padding: 20px;
+        }
+        #heroStats {
+            white-space: pre-wrap;
+        }
+        .custom-cursor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="welcome-page">
+        <h1>Welcome to Dota 2 Player Stats</h1>
+        <input type="text" id="player-id" placeholder="Enter your Dota 2 Player ID">
+        <button id="continue-btn">Continue</button>
+    </div>
+    <div id="main-page" style="display: none;">
+        <header>
+            <h1 id="greeting"></h1>
+        </header>
+        <main></main>
+        <div>
+            <input type="text" id="hero-name" placeholder="Enter hero name">
+            <button id="fetch-hero-stats-btn">Fetch Hero Stats</button>
+            <p id="heroStats"></p>
+        </div>
+        <div>
+            <button class="bg-color-btn" data-color="black">Black</button>
+            <button class="bg-color-btn" data-color="gray">Gray</button>
+            <button class="bg-color-btn" data-color="purple">Purple</button>
+            <button class="bg-color-btn" data-color="green">Green</button>
+        </div>
+    </div>
+    <div id="hero-stats-page" style="display: none;">
+        <button id="back-button">Back</button>
+        <div id="hero-stats-container"></div>
+    </div>
+    <div class="custom-cursor"></div>
+    <script type="module" src="/dota/js/main.js"></script>
+</body>
+</html>
